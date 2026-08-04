@@ -6,7 +6,7 @@ page_no,label,confidence,method,evidence,internal_page
 5,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,4 of 11
 6,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,1 of 11
 7,CREDIT_REPORT,0.98,rule,370 reed rd; xactus; repositories; transunion+experian+equifax,11 of 11
-8,OTHER,0.0,rule_unresolved,,
+8,TITLE_REPORT,0.82,llm_vision,"[ Plat map removed in anonymized sample ] — 명시적으로 plat map(지적도)임을 표시하는 텍스트. 판단 규칙상 텍스트가 거의 없는 도면/이미지 페이지는 plat map으로 분류하며, plat map은 TITLE_REPORT의 대표 시그니처에 해당함.",
 9,CREDIT_REPORT,0.98,rule,370 reed rd; fico; repositories; transunion+experian+equifax,1 of 11
 10,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,3 of 11
 11,CREDIT_REPORT,0.98,rule,370 reed rd; xactus; repositories,10 of 11
@@ -34,7 +34,7 @@ page_no,label,confidence,method,evidence,internal_page
 33,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,5 of 11
 34,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 2
 35,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,9 of 11
-36,OTHER,0.0,rule_unresolved,,
+36,INCOME_DOC,0.99,llm_vision,"Profit & Loss Statement 헤더, Sales $231,239.00, Total Expenses 49,720.00, Net Income $181,519.00 — 매출/비용/순이익 수치 나열, CTEC 서명 포함",
 37,TITLE_REPORT,0.98,rule,preliminary report; clta preliminary report form; exhibit a+legal description,page 3
 38,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,2 of 11
 39,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,3 of 11

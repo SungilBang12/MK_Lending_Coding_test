@@ -36,7 +36,7 @@
       "end_page": 7
     },
     {
-      "label": "OTHER",
+      "label": "TITLE_REPORT",
       "start_page": 8,
       "end_page": 8
     },
@@ -176,7 +176,7 @@
       "end_page": 35
     },
     {
-      "label": "OTHER",
+      "label": "INCOME_DOC",
       "start_page": 36,
       "end_page": 36
     },
@@ -289,8 +289,9 @@
       "doc_id": "TITLE_REPORT#3",
       "label": "TITLE_REPORT",
       "internal_total": null,
-      "n_pages": 8,
+      "n_pages": 9,
       "pages": [
+        8,
         12,
         16,
         18,
@@ -308,25 +309,25 @@
         22,
         16,
         18,
-        28
+        28,
+        8
       ],
-      "unnumbered_pages": []
+      "unnumbered_pages": [
+        8
+      ]
     },
     {
-      "doc_id": "OTHER#4",
-      "label": "OTHER",
+      "doc_id": "INCOME_DOC#4",
+      "label": "INCOME_DOC",
       "internal_total": null,
-      "n_pages": 2,
+      "n_pages": 1,
       "pages": [
-        8,
         36
       ],
       "reconstructed_order": [
-        8,
         36
       ],
       "unnumbered_pages": [
-        8,
         36
       ]
     }
@@ -334,18 +335,37 @@
   "meta": {
     "input": "data/testing/01.990145627_shuffled.pdf",
     "n_pages": 39,
-    "elapsed_seconds": 0.14,
-    "no_llm": true,
+    "elapsed_seconds": 9.19,
+    "no_llm": false,
     "llm_delegated_pages": [
       8,
       36
     ],
     "smoothing_log": [],
     "cost": {
-      "llm_calls": 0,
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "llm_seconds": 0.0
+      "llm_calls": 2,
+      "input_tokens": 5559,
+      "output_tokens": 238,
+      "llm_seconds": 8.52,
+      "errors": [],
+      "per_page_log": [
+        {
+          "page": 8,
+          "method": "llm_vision",
+          "attempt": 1,
+          "seconds": 5.02,
+          "input_tokens": 2763,
+          "output_tokens": 141
+        },
+        {
+          "page": 36,
+          "method": "llm_vision",
+          "attempt": 1,
+          "seconds": 3.5,
+          "input_tokens": 2796,
+          "output_tokens": 97
+        }
+      ]
     }
   }
 }

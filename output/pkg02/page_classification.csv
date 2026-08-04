@@ -9,7 +9,7 @@ page_no,label,confidence,method,evidence,internal_page
 8,CREDIT_REPORT,0.98,rule,370 reed rd; fico; repositories; transunion+experian+equifax,1 of 9
 9,TITLE_REPORT,0.98,rule,commitment for title insurance; american land title association; schedule a+schedule b,3 of 5
 10,CREDIT_REPORT,0.98,rule,370 reed rd; xactus; repositories; transunion+experian+equifax,9 of 9
-11,OTHER,0.0,rule_unresolved,,
+11,TITLE_REPORT,0.95,llm_vision,"First American Title 로고, 'Commitment for Title Insurance', 'ALTA Commitment', '2021 ALTA', Schedule A/B 언급, Form 50167851 (8-25-22), Virginia 2021 v.01.00 (07-01-2021), CLAIMS PROCEDURES 및 CLASS ACTION 조항 포함 — 권원보험 확약서 표준 말미 페이지",Page 4 of 4
 12,INCOME_DOC,0.98,rule,wage and income transcript; this product contains sensitive taxpayer data; form w-2; wage and tax statement,1 of 2
 13,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,3 of 10
 14,CREDIT_REPORT,0.98,rule,370 reed rd; tradeline; fico; repositories,
@@ -24,21 +24,21 @@ page_no,label,confidence,method,evidence,internal_page
 23,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,7 of 10
 24,CREDIT_REPORT,0.98,rule,370 reed rd; xactus,
 25,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,9 of 10
-26,OTHER,0.0,rule_unresolved,,
+26,TITLE_REPORT,0.97,llm_vision,"First American Title, Commitment for Title Insurance, Commitment Conditions, Schedule A/B, ALTA Commitment for Title Insurance, Virginia 2021 v1.01.00 (07-01-2021), Page 2 of 4",2 of 4
 27,INCOME_DOC,0.98,rule,wage and income transcript; this product contains sensitive taxpayer data; form w-2; wage and tax statement,1 of 2
 28,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,5 of 9
 29,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,8 of 10
-30,TITLE_REPORT,0.3,rule_unresolved,settlement services,
+30,TITLE_REPORT,0.95,llm_text,"문서 헤더에 'SETTLEMENT SERVICES, LLC'(타이틀 회사), '24 MONTH CHAIN OF TITLE REPORT' 명시. 'Land Records for Fairfax County, Virginia searched', 'Document type: Special/Limited Warranty Deed', 'Grantor/Grantee', 'Book/Page' 등 권원 보고서의 전형적 구성요소. 타이틀 보험 또는 권원보험 확약서 패키지의 일부.",
 31,INCOME_DOC,0.91,rule,this product contains sensitive taxpayer data; employer identification number (ein),2 of 2
-32,OTHER,0.0,rule_unresolved,,
+32,CREDIT_REPORT,0.92,llm_text,"Experian 소비자신용조회기관 표기, 'This report has been issued by the consumer reporting agency Experian', Report ID 및 Loan Number 포함, Background Data 섹션, 소비자 공시 연락처(833.256.3148, P.O. Box 1458 Allen, TX 75013), 신용조회 벤더 고지문 특징",
 33,TITLE_REPORT,0.98,rule,commitment for title insurance; american land title association; schedule a+schedule b,3 of 5
 34,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,2 of 9
 35,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,2 of 10
-36,OTHER,0.0,rule_unresolved,,
+36,INCOME_DOC,0.97,llm_vision,"IRS Form Types: W-2, Income Summary, Output - W2, Wages Tips and Other Compensation, Years: 2024/2025, Corelogic LLC IRS transcript report",
 37,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,10 of 10
 38,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,3 of 9
-39,INCOME_DOC,0.4,rule_unresolved,this product contains sensitive taxpayer data,2 of 2
-40,OTHER,0.0,rule_unresolved,,
+39,INCOME_DOC,0.92,llm_vision,"""This Product Contains Sensitive Taxpayer Data"" — IRS 세금 데이터 제품(IRS Transcript 계열)의 배타적 시그니처 문구",2 of 2
+40,TITLE_REPORT,0.97,llm_vision,"First American Title 로고, 'Commitment for Title Insurance', 'Virginia - 2021 v. 01.00 (07-01-2021)', 'LIMITATIONS OF LIABILITY', 'Schedule B, Part I—Requirements', 'Schedule B, Part II—Exceptions', 'PRO-FORMA POLICY', 'Page 3 of 4', 'Form 50167851 (8-25-22)' 등 타이틀 보험 확약서의 전형적 조항 페이지",3 of 4
 41,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,6 of 9
 42,TITLE_REPORT,0.98,rule,commitment for title insurance; american land title association; schedule a+schedule b,2 of 5
 43,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,5 of 10

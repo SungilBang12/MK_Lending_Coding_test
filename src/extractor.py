@@ -15,6 +15,9 @@ from typing import Optional
 import fitz  # PyMuPDF
 
 VISION_MIN_CHARS = 200
+# 이미지가 있는 페이지는 얇은 텍스트 레이어만으로 오판할 수 있어 임계값을 완화한다
+# (실측: pkg01 p36 이미지 P&L이 250자 텍스트 레이어 때문에 텍스트 경로로 새는 오답)
+VISION_MIN_CHARS_WITH_IMAGES = 500
 HEAD_RATIO = 0.30  # 페이지 상단 30%
 
 # "Page 7 of 11" / "Page: 7 of 11" / "PAGE 2 OF 2" / "Page 7/11" (대소문자 무시)
@@ -68,16 +71,21 @@ def extract_pages(pdf_path: str) -> list[PageRecord]:
     for i, page in enumerate(doc):
         text = page.get_text()
         n, total = parse_internal_page(text)
+        n_images = len(page.get_images())
+        stripped = len(text.strip())
+        needs_vision = stripped < VISION_MIN_CHARS or (
+            n_images > 0 and stripped < VISION_MIN_CHARS_WITH_IMAGES
+        )
         rec = PageRecord(
             page_no=i + 1,
             text=text,
             head_text=_head_text(page),
             rotation=page.rotation,
             n_chars=len(text),
-            n_images=len(page.get_images()),
+            n_images=n_images,
             internal_page=n,
             internal_total=total,
-            needs_vision=len(text.strip()) < VISION_MIN_CHARS,
+            needs_vision=needs_vision,
         )
         records.append(rec)
     doc.close()
