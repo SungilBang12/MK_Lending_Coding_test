@@ -135,13 +135,23 @@ def write_error_analysis(
         lines.append("오분류 없음 (accuracy 1.0).")
     for e in errors:
         i = e["page_no"] - 1
-        snippet = " ".join(pages[i].text.split())[:300]
+        page = pages[i]
+        snippet = " ".join(page.text.split())[:300]
         method = methods[i] if methods else "?"
+        if page.needs_vision:
+            cause = "텍스트 레이어 부족(이미지 기반 페이지) → 텍스트 룰·LLM으로 판별 불가, Vision 폴백 필요"
+        elif method == "rule_unresolved":
+            cause = "룰 앵커 미매칭(배타적 시그니처 부재) → LLM 위임 대상이나 --no-llm 모드로 미해결"
+        elif method.startswith("llm"):
+            cause = "LLM 판정 오류 — 텍스트 단서 부족 또는 문맥 오해석 (스니펫으로 검증 요망)"
+        else:
+            cause = "룰 오분류 — 앵커 사전 보강 검토 필요"
         lines += [
             f"## p{e['page_no']:02d}: pred={e['pred']} / gt={e['gt']} (method={method})",
             "",
+            f"- 추정 원인: {cause}",
             f"- 텍스트 스니펫: `{snippet}`",
-            f"- 문자 수 {pages[i].n_chars}, 이미지 {pages[i].n_images}개, 회전 {pages[i].rotation}°",
+            f"- 문자 수 {page.n_chars}, 이미지 {page.n_images}개, 회전 {page.rotation}°",
             "",
         ]
     with open(out_path, "w") as f:

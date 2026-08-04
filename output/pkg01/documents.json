@@ -334,7 +334,7 @@
   "meta": {
     "input": "data/testing/01.990145627_shuffled.pdf",
     "n_pages": 39,
-    "elapsed_seconds": 0.15,
+    "elapsed_seconds": 0.14,
     "no_llm": true,
     "llm_delegated_pages": [
       8,

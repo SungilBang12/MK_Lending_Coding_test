@@ -74,16 +74,12 @@ class LLMProvider(ABC):
 
 
 class AnthropicProvider(LLMProvider):
-    def __init__(
-        self,
-        text_model: str | None = None,
-        vision_model: str | None = None,
-    ):
+    def __init__(self):
         import anthropic
 
         self.client = anthropic.Anthropic()
-        self.text_model = text_model or os.environ.get("LLM_TEXT_MODEL", DEFAULT_TEXT_MODEL)
-        self.vision_model = vision_model or os.environ.get("LLM_VISION_MODEL", DEFAULT_VISION_MODEL)
+        self.text_model = os.environ.get("LLM_TEXT_MODEL", DEFAULT_TEXT_MODEL)
+        self.vision_model = os.environ.get("LLM_VISION_MODEL", DEFAULT_VISION_MODEL)
 
     def complete_text(self, system: str, user: str) -> tuple[str, dict]:
         resp = self.client.messages.create(

@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import os
 import time
 from pathlib import Path
 
@@ -114,6 +113,12 @@ def run_classify(args: argparse.Namespace) -> None:
         print(report_md)
 
 
+def run_build_gt(args: argparse.Namespace) -> None:
+    from src.gt_builder import build_ground_truth
+
+    build_ground_truth()
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="mk-doc-classifier")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -126,7 +131,7 @@ def main() -> None:
     c.set_defaults(func=run_classify)
 
     g = sub.add_parser("build-gt", help="testing_answers/ 원본 PDF에서 GT CSV 생성")
-    g.set_defaults(func=lambda a: __import__("src.gt_builder", fromlist=["x"]).build_ground_truth())
+    g.set_defaults(func=run_build_gt)
 
     args = ap.parse_args()
     args.func(args)

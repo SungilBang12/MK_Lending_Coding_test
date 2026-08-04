@@ -10,8 +10,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 from src.extractor import PageRecord
 
@@ -72,7 +71,6 @@ MARGIN_THRESHOLD = 3.0
 class RuleResult:
     label: str  # 확정 라벨 (미확정 시 최고 점수 라벨, needs_llm=True)
     confidence: float
-    scores: dict[str, float] = field(default_factory=dict)
     evidence: str = ""
     needs_llm: bool = False
 
@@ -113,7 +111,6 @@ def classify_page(rec: PageRecord) -> RuleResult:
         return RuleResult(
             label=top_label,
             confidence=round(confidence, 2),
-            scores=scores,
             evidence="; ".join(evidences[top_label][:4]),
             needs_llm=False,
         )
@@ -122,7 +119,6 @@ def classify_page(rec: PageRecord) -> RuleResult:
     return RuleResult(
         label=top_label if top > 0 else "OTHER",
         confidence=round(min(0.5, top / (SCORE_THRESHOLD * 2)), 2),
-        scores=scores,
         evidence="; ".join(evidences.get(top_label, [])[:4]),
         needs_llm=True,
     )
