@@ -61,12 +61,19 @@ python -m src.main classify --input data/validation/02.990367284_shuffled.pdf \
 # 재현 모드: API 키 없이 룰 기반만으로 end-to-end 실행 (ablation 베이스라인)
 python -m src.main classify --input ... --output output/pkg01_rules_only --no-llm --gt ...
 
+# 문서별 PDF 재생성: 기존 documents.json 기반, LLM 재호출 없음
+python -m src.main split --input data/testing/01.990145627_shuffled.pdf --output output/pkg01
+
 # 단위 테스트 (룰 매칭 / 그룹핑 / GT·평가기 / LLM 케스케이드 mock — 21건)
 python -m pytest tests/
 ```
 
 출력물(`output/<pkg>/`): `page_classification.csv`, `documents.json`,
-`report.html`(타임라인 스트립·분포 차트), `evaluation.md`, `error_analysis.md`(GT 있을 때).
+`report.html`(타임라인 스트립·분포 차트), `evaluation.md`, `error_analysis.md`(GT 있을 때),
+`documents/<LABEL>_<n>.pdf`(논리 문서별로 셔플 해제 순서로 재조립한 PDF —
+classify 시 자동 생성되며, **과제 데이터 재조립물이므로 저장소에는 커밋하지 않음**).
+실측 검증: pkg01의 URLA(11p)·TITLE(9p) 분리 PDF는 원본 문서와 페이지 순서까지 완전
+일치, CREDIT(18p)은 페이지 구성 완전 일치(무번호 부속 페이지의 순서만 휴리스틱 — §9-4).
 
 ---
 
@@ -301,9 +308,12 @@ macro-F1(0.735)이 accuracy 대비 낮은 것은 support 1짜리 INCOME_DOC 클�
    (evidence)를 함께 저장해 언더라이터 검증 루프를 지원합니다.
 4. **논리 문서 복원의 한계**: 문서 2부가 섞인 경우 부(copy) 간 페이지 배정은 물리
    순서 보존 휴리스틱이라, 두 부의 내용이 다르면(예: 수정 전/후 버전) 오배정될 수
-   있습니다. 페이지 간 내용 유사도(차주명, Report ID 등 키 필드 매칭)를 타이브레이커로
-   추가하는 것이 다음 단계입니다. 내부 번호가 없는 부속 페이지의 소속 부 판정도
-   동일한 방법으로 개선 가능합니다.
+   있습니다. 또한 내부 번호가 없는 페이지(표지·안내문 등)는 "번호 페이지 뒤에 물리
+   순서로 부착"하므로 원본의 정확한 위치(예: 신용보고서의 표지가 맨 앞)는 복원되지
+   않습니다 — pkg01 실측에서 CREDIT 분리 PDF가 구성은 완전 일치하지만 부속 페이지
+   순서가 원본과 다른 것이 이 한계입니다. 페이지 간 내용 유사도(차주명, Report ID 등
+   키 필드 매칭)와 페이지 유형 사전 지식(표지는 선두)을 타이브레이커로 추가하는 것이
+   다음 단계입니다.
 5. **스무딩의 실효성**: 완전 셔플 패키지에서는 발동 조건이 거의 성립하지 않습니다
    (실측 0건). 부분 셔플·스캔 순서 뒤섞임 같은 실운영 입력에서 효과가 있는
    장치이며, 완전 셔플에서는 논리 문서 복원이 그 역할을 대신합니다.

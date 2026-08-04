@@ -93,10 +93,13 @@ def run_classify(args: argparse.Namespace) -> None:
         json.dump(documents, f, indent=2, ensure_ascii=False)
 
     from src.reporter import write_html_report
+    from src.splitter import write_document_pdfs
 
     write_html_report(out_dir, pages, labels, confidences, methods, documents)
+    pdf_names = write_document_pdfs(args.input, documents, out_dir)
 
     print(f"[E] {csv_path} / documents.json / report.html 생성 완료 ({elapsed:.1f}s)")
+    print(f"    문서별 PDF {len(pdf_names)}개: documents/{', documents/'.join(pdf_names)}")
     print(f"    룰 확정 {len(pages) - len(llm_targets)}/{len(pages)}, LLM 위임 {len(llm_targets)}건")
     if cost_summary["llm_calls"]:
         print(f"    LLM: {cost_summary}")
@@ -119,6 +122,16 @@ def run_build_gt(args: argparse.Namespace) -> None:
     build_ground_truth()
 
 
+def run_split(args: argparse.Namespace) -> None:
+    """기존 분류 결과(documents.json)로부터 문서별 PDF만 재생성한다 (LLM 재호출 없음)."""
+    from src.splitter import write_document_pdfs
+
+    with open(Path(args.output) / "documents.json") as f:
+        documents = json.load(f)
+    names = write_document_pdfs(args.input, documents, args.output)
+    print(f"문서별 PDF {len(names)}개 생성: {args.output}/documents/")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="mk-doc-classifier")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -132,6 +145,11 @@ def main() -> None:
 
     g = sub.add_parser("build-gt", help="testing_answers/ 원본 PDF에서 GT CSV 생성")
     g.set_defaults(func=run_build_gt)
+
+    s = sub.add_parser("split", help="기존 documents.json 기반 문서별 PDF 재생성")
+    s.add_argument("--input", required=True)
+    s.add_argument("--output", required=True, help="documents.json이 있는 출력 디렉터리")
+    s.set_defaults(func=run_split)
 
     args = ap.parse_args()
     args.func(args)
