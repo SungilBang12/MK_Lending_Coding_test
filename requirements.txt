@@ -1,0 +1,6 @@
+pymupdf>=1.24
+anthropic>=0.40
+pydantic>=2.5
+pandas>=2.0
+matplotlib>=3.8
+pytest>=8.0
