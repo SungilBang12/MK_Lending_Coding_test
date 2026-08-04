@@ -1,0 +1,40 @@
+page_no,label,confidence,method,evidence,internal_page
+1,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,7 of 11
+2,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,10 of 11
+3,CREDIT_REPORT,0.98,rule,370 reed rd; xactus,
+4,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,5 of 11
+5,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,4 of 11
+6,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,1 of 11
+7,CREDIT_REPORT,0.98,rule,370 reed rd; xactus; repositories; transunion+experian+equifax,11 of 11
+8,OTHER,0.0,rule_unresolved,,
+9,CREDIT_REPORT,0.98,rule,370 reed rd; fico; repositories; transunion+experian+equifax,1 of 11
+10,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,3 of 11
+11,CREDIT_REPORT,0.98,rule,370 reed rd; xactus; repositories,10 of 11
+12,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 4
+13,CREDIT_REPORT,0.98,rule,370 reed rd; xactus; transunion+experian+equifax,
+14,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,6 of 11
+15,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,8 of 11
+16,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 6
+17,CREDIT_REPORT,0.9,rule,your credit score and the price you pay for credit,
+18,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 7
+19,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,6 of 11
+20,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,4 of 11
+21,CREDIT_REPORT,0.98,rule,370 reed rd; tradeline; fico; repositories,
+22,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 5
+23,CREDIT_REPORT,0.98,rule,370 reed rd; xactus; transunion+experian+equifax,
+24,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,8 of 11
+25,CREDIT_REPORT,0.98,rule,credit score disclosure; notice to the home loan applicant; fico; repositories,
+26,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,11 of 11
+27,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,9 of 11
+28,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 8
+29,CREDIT_REPORT,0.98,rule,370 reed rd; xactus,
+30,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,7 of 11
+31,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,2 of 11
+32,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 1
+33,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,5 of 11
+34,TITLE_REPORT,0.98,rule,preliminary report; fidelity national title; clta preliminary report form,page 2
+35,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,9 of 11
+36,OTHER,0.0,rule_unresolved,,
+37,TITLE_REPORT,0.98,rule,preliminary report; clta preliminary report form; exhibit a+legal description,page 3
+38,URLA_1003,0.98,rule,uniform residential loan application; freddie mac form 65; fannie mae form 1003,2 of 11
+39,CREDIT_REPORT,0.94,rule,370 reed rd; repositories,3 of 11

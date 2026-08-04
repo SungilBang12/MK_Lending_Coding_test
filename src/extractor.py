@@ -17,10 +17,10 @@ import fitz  # PyMuPDF
 VISION_MIN_CHARS = 200
 HEAD_RATIO = 0.30  # 페이지 상단 30%
 
-# "Page 7 of 11" / "Page: 7 of 11" / "Page 7/11"
-_PAGE_X_OF_Y = re.compile(r"[Pp]age[:\s]*(\d{1,3})\s*(?:of|OF|/)\s*(\d{1,3})")
+# "Page 7 of 11" / "Page: 7 of 11" / "PAGE 2 OF 2" / "Page 7/11" (대소문자 무시)
+_PAGE_X_OF_Y = re.compile(r"page[:\s]*(\d{1,3})\s*(?:of|/)\s*(\d{1,3})", re.IGNORECASE)
 # 접두어 없는 "7 of 11" (URLA가 이 형식)
-_X_OF_Y = re.compile(r"\b(\d{1,3})\s+of\s+(\d{1,3})\b")
+_X_OF_Y = re.compile(r"\b(\d{1,3})\s+of\s+(\d{1,3})\b", re.IGNORECASE)
 # "of M" 없는 "Page 2" (Title Report CLTA 양식)
 _PAGE_ONLY = re.compile(r"\bPage\s+(\d{1,3})\b")
 
