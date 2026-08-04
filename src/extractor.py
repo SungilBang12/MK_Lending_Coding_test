@@ -93,9 +93,11 @@ def extract_pages(pdf_path: str) -> list[PageRecord]:
 
 
 def render_page_png(pdf_path: str, page_no: int, dpi: int = 150) -> bytes:
-    """Vision 폴백용 페이지 렌더링. get_pixmap은 /Rotate를 적용해 정방향 이미지를 만든다."""
+    """Vision 폴백용 페이지 렌더링. 콘텐츠는 정방향이고 /Rotate가 회전을 만들므로
+    회전을 0으로 리셋한 뒤 렌더링해 정방향 이미지를 얻는다."""
     doc = fitz.open(pdf_path)
     page = doc[page_no - 1]
+    page.set_rotation(0)
     pix = page.get_pixmap(dpi=dpi)
     data = pix.tobytes("png")
     doc.close()

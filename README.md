@@ -70,7 +70,8 @@ python -m pytest tests/
 
 출력물(`output/<pkg>/`): `page_classification.csv`, `documents.json`,
 `report.html`(타임라인 스트립·분포 차트), `evaluation.md`, `error_analysis.md`(GT 있을 때),
-`documents/<LABEL>_<n>.pdf`(논리 문서별로 셔플 해제 순서로 재조립한 PDF —
+`documents/<LABEL>_<n>.pdf`(논리 문서별로 셔플 해제 순서 + 정방향 회전 보정으로
+재조립한 PDF — 셔플 패키지의 /Rotate 메타데이터를 제거해 원본 방향을 복원.
 classify 시 자동 생성되며, **과제 데이터 재조립물이므로 저장소에는 커밋하지 않음**).
 실측 검증: pkg01의 URLA(11p)·TITLE(9p) 분리 PDF는 원본 문서와 페이지 순서까지 완전
 일치, CREDIT(18p)은 페이지 구성 완전 일치(무번호 부속 페이지의 순서만 휴리스틱 — §9-4).
